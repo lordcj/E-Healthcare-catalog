@@ -1,6 +1,9 @@
 package devops.medical.dao;
 
 import java.util.List;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.HashSet;
 
 import devops.medical.model.Doctor;
 import devops.medical.model.DoctorSlots;
@@ -14,7 +17,11 @@ public interface PatientDao {
 	
 	Patient check(PatientLogin patientlogin);
 	
+	//list of slots of meeting with doctors for a patient with patient_id
 	List<DoctorSlots> getAllPatient(String patient_id);
 	
 	List<Doctor> getAllDoctors();
+
+	//all available slots for a specific doctor id
+	HashSet<LocalDateTime> getAllSlots(String id);
 }

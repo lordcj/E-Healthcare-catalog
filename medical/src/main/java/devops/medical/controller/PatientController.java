@@ -1,5 +1,10 @@
 package devops.medical.controller;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +22,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import devops.medical.model.Patient;
 import devops.medical.service.PatientService;
 import devops.medical.model.PatientLogin;
+import devops.medical.model.BookedSlot;
 import devops.medical.model.Doctor;
 import devops.medical.model.DoctorSlots;
 
@@ -49,16 +55,24 @@ public class PatientController {
 	@RequestMapping(value="/patient/{id}", method=RequestMethod.GET)
 	public ModelAndView patientcatalog(HttpServletRequest request, HttpServletResponse response, @PathVariable(value="id") String id) {
 		ModelAndView mav = new ModelAndView("PatientCatalog");
-		List<DoctorSlots> doctorslots = patientservice.getAllPatient(id);
 		List<Doctor> doctors = patientservice.getAllDoctors();
+		ArrayList<ArrayList<String> > available = new ArrayList<ArrayList<String>>();
+		for(Doctor doctor: doctors) {
+			ArrayList<String> slots = patientservice.validDates(doctor.getId());
+			available.add(slots);
+		}
+		
 		mav.addObject("id", id);
 		mav.addObject("doctors", doctors);
+		mav.addObject("slots", available);
+		mav.addObject("bookedslots", new BookedSlot());
 		return mav;
 	}
 	
 	@RequestMapping(value="/patientloginprocess", method=RequestMethod.POST)
 	public String patientloginprocess(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("patient") PatientLogin patientlogin,RedirectAttributes redirectAttrs) {
 		Patient user = patientservice.check(patientlogin);
+		System.out.println("yes");
 		if(user!=null) {
 			String id = user.getId();
 			return "redirect:/patient/"+id;
@@ -66,6 +80,13 @@ public class PatientController {
 			redirectAttrs.addFlashAttribute("message", "Id or Password is incorrect");
 			return "redirect:/patientlogin";
 		}
+	}
+	
+	@RequestMapping(value="/doctorbookingprocess", method=RequestMethod.POST)
+	public String doctorbookingprocess(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("bookedslots") BookedSlot bookedslot, RedirectAttributes redirectAttrs) {
+		System.out.println(bookedslot.getBookedslot()+" ****** ");//bookedslot.getId());
+		String id = bookedslot.getId();
+		return "redirect:/patient/"+id;
 	}
 	
 	@RequestMapping(value="/patientregisterprocess", method=RequestMethod.POST)

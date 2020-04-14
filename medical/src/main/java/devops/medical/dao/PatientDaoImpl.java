@@ -2,7 +2,10 @@ package devops.medical.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -57,6 +60,16 @@ public class PatientDaoImpl implements PatientDao {
 		return doctors;
 	}
 	
+	public HashSet<LocalDateTime> getAllSlots(String id){
+		String sql = "select * from DoctorSlots where id='"+id+"'";
+		List<DoctorSlots> allMeetings = jdbcTemplate.query(sql, new DoctorSlotsMapper());
+		HashSet<LocalDateTime> allSlots = new HashSet<LocalDateTime>();
+		for(DoctorSlots d : allMeetings) {
+			allSlots.add(d.getTiming());
+		}
+		return allSlots;
+	}
+	
 }
 
 class PatientMapper implements RowMapper<Patient>{
@@ -75,7 +88,8 @@ class DoctorSlotsMapper implements RowMapper<DoctorSlots>{
 		DoctorSlots meeting = new DoctorSlots();
 		meeting.setId(rs.getString("id"));
 		meeting.setPatient_id(rs.getString("patient_id"));
-		Date timing = new Date(rs.getTimestamp("timing").getTime());
+		Date timing1 = new Date(rs.getTimestamp("timing").getTime());
+		LocalDateTime timing = LocalDateTime.ofInstant(timing1.toInstant(),ZoneId.systemDefault());
 		meeting.setTiming(timing);
 		
 		return meeting;

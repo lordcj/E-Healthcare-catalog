@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,17 +11,26 @@
 <title>Welcome</title>
 </head>
 <body>
-	<p1>Hi ${id }</p1>
+	<div class="container">Hi ${id }</div>
 	<c:if test="${not empty doctors}">
-    <table>
-        <c:forEach var="doctor" items="${doctors}">
-            <tr>
-                <td>${doctor.id}</td>
-                <td>${doctor.username}</td>
-                <td>${doctor.type}</td>
-                <td>${doctor.password}</td>   
-            </tr>
-        </c:forEach>
-    </table>
+    <c:forEach var="doctor" items="${doctors}" varStatus="status">
+        <div class="container">
+	        <div>    
+	            <div>${doctor.id}</div>
+	            <div>${doctor.username}</div>
+	            <div>${doctor.type}</div>
+	            <div>${doctor.password}</div>   
+        	</div>
+			<div>
+				<form:form id="booked${status.index }" action="doctorbookingprocess" method="post" modelAttribute="bookedslots" >
+					<form:select path="bookedslot" >
+						<form:options items="${slots[status.index] }" />
+					</form:select>
+					<form:input type="text" path="id" value="${id }" />
+		 			<input type="submit" name="Submit" value="Submit" tabindex="2" />
+				</form:form>
+			</div>
+		</div>
+    </c:forEach>
 </c:if>
 </body>

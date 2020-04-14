@@ -1,5 +1,9 @@
 package devops.medical.service;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 import devops.medical.model.Doctor;
@@ -18,4 +22,8 @@ public interface PatientService {
 	List<DoctorSlots> getAllPatient(String patient_id);
 	
 	List<Doctor> getAllDoctors();
+	
+	HashSet<LocalDateTime> getAllSlots(String id);
+	
+	ArrayList<String> validDates(String id);
 }
