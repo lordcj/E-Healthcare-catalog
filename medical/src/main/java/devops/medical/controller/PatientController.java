@@ -82,7 +82,7 @@ public class PatientController {
 		}
 	}
 	
-	@RequestMapping(value="/doctorbookingprocess", method=RequestMethod.POST)
+	@RequestMapping(value="/patient/doctorbookingprocess", method=RequestMethod.POST)
 	public String doctorbookingprocess(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("bookedslots") BookedSlot bookedslot, RedirectAttributes redirectAttrs) {
 		System.out.println(bookedslot.getBookedslot()+" ****** ");//bookedslot.getId());
 		String id = bookedslot.getId();

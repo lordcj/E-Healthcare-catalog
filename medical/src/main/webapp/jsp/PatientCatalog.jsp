@@ -19,7 +19,7 @@
 	            <div>${doctor.id}</div>
 	            <div>${doctor.username}</div>
 	            <div>${doctor.type}</div>
-	            <div>${doctor.password}</div>   
+	             
         	</div>
 			<div>
 				<form:form id="booked${status.index }" action="doctorbookingprocess" method="post" modelAttribute="bookedslots" >
