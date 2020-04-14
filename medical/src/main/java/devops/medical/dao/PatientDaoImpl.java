@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import devops.medical.model.BookedSlot;
 import devops.medical.model.Doctor;
 import devops.medical.model.DoctorSlots;
 import devops.medical.model.Patient;
@@ -66,8 +67,15 @@ public class PatientDaoImpl implements PatientDao {
 		HashSet<LocalDateTime> allSlots = new HashSet<LocalDateTime>();
 		for(DoctorSlots d : allMeetings) {
 			allSlots.add(d.getTiming());
+			System.out.println("$$$$$$ "+d.getTiming());
 		}
 		return allSlots;
+	}
+	
+	public int updateSlot(BookedSlot bookedslot) {
+		String sql = "insert into DoctorSlots values (?,?,?)";
+		java.sql.Timestamp timing = java.sql.Timestamp.valueOf(bookedslot.getBookedslot());
+		return jdbcTemplate.update(sql, new Object[] {bookedslot.getId(), timing, bookedslot.getPatientid()});
 	}
 	
 }

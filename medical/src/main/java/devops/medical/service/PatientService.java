@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
+import devops.medical.model.BookedSlot;
 import devops.medical.model.Doctor;
 import devops.medical.model.DoctorSlots;
 import devops.medical.model.Patient;
@@ -26,4 +27,6 @@ public interface PatientService {
 	HashSet<LocalDateTime> getAllSlots(String id);
 	
 	ArrayList<String> validDates(String id);
+	
+	int updateSlot(BookedSlot bookedslot);
 }

@@ -26,7 +26,8 @@
 					<form:select path="bookedslot" >
 						<form:options items="${slots[status.index] }" />
 					</form:select>
-					<form:input type="text" path="id" value="${id }" />
+					<form:input type="hidden" path="patientid" value="${id }" />
+					<form:input type="hidden" path="id" value="${doctor.id }" />
 		 			<input type="submit" name="Submit" value="Submit" tabindex="2" />
 				</form:form>
 			</div>

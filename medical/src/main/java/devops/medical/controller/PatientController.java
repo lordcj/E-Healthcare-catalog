@@ -1,5 +1,7 @@
 package devops.medical.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -83,9 +85,10 @@ public class PatientController {
 	}
 	
 	@RequestMapping(value="/patient/doctorbookingprocess", method=RequestMethod.POST)
-	public String doctorbookingprocess(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("bookedslots") BookedSlot bookedslot, RedirectAttributes redirectAttrs) {
+	public String doctorbookingprocess(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("bookedslots") BookedSlot bookedslot, RedirectAttributes redirectAttrs) throws ParseException {
 		System.out.println(bookedslot.getBookedslot()+" ****** ");//bookedslot.getId());
-		String id = bookedslot.getId();
+		String id = bookedslot.getPatientid();
+		patientservice.updateSlot(bookedslot);
 		return "redirect:/patient/"+id;
 	}
 	
