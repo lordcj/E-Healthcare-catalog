@@ -29,4 +29,6 @@ public interface PatientService {
 	ArrayList<String> validDates(String id);
 	
 	int updateSlot(BookedSlot bookedslot);
+	
+	ArrayList<BookedSlot> getAllBookedSlot(String patientid);
 }

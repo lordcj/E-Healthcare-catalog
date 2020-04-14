@@ -55,7 +55,14 @@ public class PatientController {
 	}
 	
 	@RequestMapping(value="/patient/{id}", method=RequestMethod.GET)
-	public ModelAndView patientcatalog(HttpServletRequest request, HttpServletResponse response, @PathVariable(value="id") String id) {
+	public ModelAndView patient(HttpServletRequest request, HttpServletResponse response, @PathVariable(value="id") String id) {
+		ModelAndView mav = new ModelAndView("Patient");
+		mav.addObject("id", id);
+		return mav;
+	}
+	
+	@RequestMapping(value="/patient/{id}/bookdoctor", method=RequestMethod.GET)
+	public ModelAndView bookdoctor(HttpServletRequest request, HttpServletResponse response, @PathVariable(value="id") String id) {
 		ModelAndView mav = new ModelAndView("PatientCatalog");
 		List<Doctor> doctors = patientservice.getAllDoctors();
 		ArrayList<ArrayList<String> > available = new ArrayList<ArrayList<String>>();
@@ -63,11 +70,18 @@ public class PatientController {
 			ArrayList<String> slots = patientservice.validDates(doctor.getId());
 			available.add(slots);
 		}
-		
 		mav.addObject("id", id);
 		mav.addObject("doctors", doctors);
 		mav.addObject("slots", available);
 		mav.addObject("bookedslots", new BookedSlot());
+		return mav;
+	}
+	
+	@RequestMapping(value="/patient/{id}/bookings", method=RequestMethod.GET)
+	public ModelAndView bookings(HttpServletRequest request, HttpServletResponse response, @PathVariable(value="id") String id) {
+		ModelAndView mav = new ModelAndView("Bookings");
+		ArrayList<BookedSlot> bookedslots = patientservice.getAllBookedSlot(id);
+		mav.addObject("bookedslots", bookedslots);
 		return mav;
 	}
 	
@@ -84,8 +98,8 @@ public class PatientController {
 		}
 	}
 	
-	@RequestMapping(value="/patient/doctorbookingprocess", method=RequestMethod.POST)
-	public String doctorbookingprocess(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("bookedslots") BookedSlot bookedslot, RedirectAttributes redirectAttrs) throws ParseException {
+	@RequestMapping(value="/patient/{patientid}/doctorbookingprocess", method=RequestMethod.POST)
+	public String doctorbookingprocess(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("bookedslots") BookedSlot bookedslot, RedirectAttributes redirectAttrs, @PathVariable(value="patientid") String patientid) throws ParseException {
 		System.out.println(bookedslot.getBookedslot()+" ****** ");//bookedslot.getId());
 		String id = bookedslot.getPatientid();
 		patientservice.updateSlot(bookedslot);

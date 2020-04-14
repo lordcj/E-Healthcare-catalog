@@ -2,8 +2,12 @@ package devops.medical.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -76,6 +80,22 @@ public class PatientDaoImpl implements PatientDao {
 		String sql = "insert into DoctorSlots values (?,?,?)";
 		java.sql.Timestamp timing = java.sql.Timestamp.valueOf(bookedslot.getBookedslot());
 		return jdbcTemplate.update(sql, new Object[] {bookedslot.getId(), timing, bookedslot.getPatientid()});
+	}
+	
+	public ArrayList<BookedSlot> getAllBookedSlot(String patientid){
+		String sql = "select * from DoctorSlots where patient_id = '"+patientid+"'";
+		List<DoctorSlots> patients = jdbcTemplate.query(sql, new DoctorSlotsMapper());
+		ArrayList<BookedSlot> bookings = new ArrayList<BookedSlot>();
+		for(DoctorSlots patient: patients) {
+			BookedSlot temp = new BookedSlot();
+			temp.setId(patient.getId());
+			temp.setPatientid(patient.getPatient_id());
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			String time = patient.getTiming().format(formatter);
+			temp.setBookedslot(time);
+			bookings.add(temp);
+		}
+		return bookings;
 	}
 	
 }

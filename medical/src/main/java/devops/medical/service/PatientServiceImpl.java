@@ -92,4 +92,9 @@ public class PatientServiceImpl implements PatientService {
 	public int updateSlot(BookedSlot bookedslot) {
 		return PatientDao.updateSlot(bookedslot);
 	}
+	
+	public ArrayList<BookedSlot> getAllBookedSlot(String patientid){
+		return PatientDao.getAllBookedSlot(patientid);
+	}
+	
 }

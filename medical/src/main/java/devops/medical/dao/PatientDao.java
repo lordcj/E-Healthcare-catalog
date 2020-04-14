@@ -2,6 +2,7 @@ package devops.medical.dao;
 
 import java.util.List;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -27,4 +28,7 @@ public interface PatientDao {
 	HashSet<LocalDateTime> getAllSlots(String id);
 	
 	int updateSlot(BookedSlot bookedslot);
+	
+	//all booked slots by a patient
+	ArrayList<BookedSlot> getAllBookedSlot(String patientid);
 }
