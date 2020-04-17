@@ -17,6 +17,9 @@
         <div style="font-size: xxx-large;text-align: center;width: 100%;">
             <a href="doctorlogin" style="text-decoration: none">Doctor</a>
         </div>
+        <div style="font-size: xxx-large;text-align: center;width: 100%;">
+            <a href="adminlogin" style="text-decoration: none">Administrator</a>
+        </div>
     </div>
 	
 </body>
