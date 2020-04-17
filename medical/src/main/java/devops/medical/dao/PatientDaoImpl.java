@@ -61,7 +61,6 @@ public class PatientDaoImpl implements PatientDao {
 	public List<Doctor> getAllDoctors(){
 		String sql = "select * from Doctor";
 		List<Doctor> doctors = jdbcTemplate.query(sql, new DoctorMapper());
-		System.out.println(doctors.size());
 		return doctors;
 	}
 	
@@ -71,7 +70,6 @@ public class PatientDaoImpl implements PatientDao {
 		HashSet<LocalDateTime> allSlots = new HashSet<LocalDateTime>();
 		for(DoctorSlots d : allMeetings) {
 			allSlots.add(d.getTiming());
-			System.out.println("$$$$$$ "+d.getTiming());
 		}
 		return allSlots;
 	}
