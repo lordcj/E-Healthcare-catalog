@@ -1,1 +1,1 @@
-E-HealtCare Catalog
+E-HealthCare Catalog
