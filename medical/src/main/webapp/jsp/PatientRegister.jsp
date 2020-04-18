@@ -39,7 +39,7 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="<%=request.getContextPath()%>/resources/images/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="#" class="signup-image-link">Sign up for a new account</a>
+                        <a href="patientlogin" class="signup-image-link">Log in to your account</a>
                     </div>
 
                     <div class="signin-form">
