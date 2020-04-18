@@ -8,4 +8,5 @@
 </head>
 <body>
 	<p1>Hi ${id }</p1>
+	<a href="logout">Logout</a>
 </body>

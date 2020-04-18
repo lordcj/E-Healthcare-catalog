@@ -8,7 +8,7 @@
 <title>Welcome</title>
 </head>
 <body>
-	
+	<a href="logout">Logout</a>
 	<div class="d-flex justify-content-around" style="margin-top:20%" >
 		<div style="font-size: xxx-large;text-align: center;width: 100%;">
     		<a href="${id }/bookings" style="text-decoration: none">Bookings</a>
