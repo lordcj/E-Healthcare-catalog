@@ -18,6 +18,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import devops.medical.model.Admin;
 import devops.medical.model.AdminLogin;
 import devops.medical.model.Doctor;
+import devops.medical.model.Lab;
 import devops.medical.model.Patient;
 import devops.medical.service.AdminService;
 
@@ -61,11 +62,7 @@ public class AdminController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/labs", method=RequestMethod.GET)
-	public ModelAndView labsList(HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView mav = new ModelAndView("LabsList");
-		return mav;
-	}
+	
 	
 	@RequestMapping(value="admin/doctoradd", method=RequestMethod.GET)
 	public ModelAndView doctoradd(HttpServletRequest request, HttpServletResponse response) {
@@ -106,6 +103,75 @@ public class AdminController {
 		adminservice.deleteDoctor(id);
 		return "redirect:/admin/doctors";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="admin/labs", method=RequestMethod.GET)
+	public ModelAndView labsList(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView("LabsList");
+		List<Lab> labslist = adminservice.getAllLabs();
+		mav.addObject("labslist", labslist);
+		return mav;
+	}
+	
+	@RequestMapping(value="admin/labadd", method=RequestMethod.GET)
+	public ModelAndView labadd(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView("LabAdd");
+		mav.addObject("lab", new Lab());
+		return mav;
+	}
+	
+	@RequestMapping(value="admin/labaddprocess", method=RequestMethod.POST)
+	public String labaddprocess(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("lab") Lab lab, RedirectAttributes redirectAttrs) {
+		Lab user = adminservice.validateLab(lab);
+		if(user != null) {
+			redirectAttrs.addFlashAttribute("message", "id already exists");
+			return "redirect:/admin/labadd";
+		}else {
+			adminservice.registerLab(lab);
+			return "redirect:/admin/labs";
+		}
+	}
+	
+	@RequestMapping(value="admin/labedit/{id}", method=RequestMethod.GET)
+	public ModelAndView labedit(HttpServletRequest request, HttpServletResponse response, @PathVariable(value="id") String id) {
+		ModelAndView mav = new ModelAndView("LabEdit");
+		Lab lab = adminservice.getLab(id);
+		mav.addObject("lab", lab);
+		return mav;
+	}
+	
+	
+	@RequestMapping(value="admin/labedit/labsave", method=RequestMethod.POST)
+	public String labsave(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("lab") Lab lab, RedirectAttributes redirectAttrs) {
+		adminservice.updateLab(lab);
+		return "redirect:/admin/labs";
+	}
+	
+	
+	@RequestMapping(value="admin/labdelete/{id}", method=RequestMethod.GET)
+	public String labdelete(HttpServletRequest request, HttpServletResponse response, @PathVariable(value="id") String id) {
+		adminservice.deleteLab(id);
+		return "redirect:/admin/labs";
+	}
+	
+	
+	
+	
+	
+	
 
 	
 	
