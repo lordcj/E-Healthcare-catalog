@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.RowMapper;
 import devops.medical.model.Admin;
 import devops.medical.model.AdminLogin;
 import devops.medical.model.Doctor;
+import devops.medical.model.Lab;
 import devops.medical.model.Patient;
 
 public class AdminDaoImpl implements AdminDao{
@@ -83,6 +84,64 @@ public class AdminDaoImpl implements AdminDao{
 		String sql = "delete from Doctor where id = '"+id+"'";
 		return jdbcTemplate.update(sql);
 	}
+	
+	
+	
+	public List<Lab> getAllLabs(){
+		String sql = "select * from Lab";
+		List<Lab> labs = jdbcTemplate.query(sql, new LabMapper());
+		return labs;
+	}
+	
+	public Lab validateLab(Lab lab) {
+		String sql = "select * from Lab where id = '"+lab.getId()+"'";
+		List<Lab> labs = jdbcTemplate.query(sql, new LabMapper());
+		
+		return labs.size()>0?labs.get(0):null;
+	}
+	
+	public int registerLab(Lab lab) {
+		String sql = "insert into Lab values (?,?,?)";
+		
+		return jdbcTemplate.update(sql, new Object[] {lab.getId(), lab.getName(), lab.getType()});
+	}
+	
+	
+	
+	public Lab getLab(String id) {
+		String sql ="select * from Lab where id= '"+id+"'";
+		return jdbcTemplate.query(sql, new ResultSetExtractor<Lab>() {
+			
+			@Override
+			public Lab extractData(ResultSet rs) throws SQLException, DataAccessException {
+				Lab lab = new Lab();
+				if(rs.next()) {
+					
+					lab.setId(rs.getString("id"));
+					lab.setName(rs.getString("name"));
+					lab.setType(rs.getString("type"));
+				
+				}
+				
+					
+					return lab;
+					
+				}
+			});
+	}
+	
+	
+	public int updateLab(Lab lab) {
+		String sql = "update Lab set name=?, type=? where id = '"+lab.getId()+"'";
+		return jdbcTemplate.update(sql, new Object[] {lab.getName(), lab.getType()});
+		
+	}
+	
+	
+	public int deleteLab(String id) {
+		String sql = "delete from Lab where id = '"+id+"'";
+		return jdbcTemplate.update(sql);
+	}
 		
 		
 	
@@ -126,6 +185,19 @@ class DoctorExtractor implements ResultSetExtractor<Doctor>{
 		return doctor;
 	}
 }
+
+class LabMapper implements RowMapper<Lab>{
+	public Lab mapRow(ResultSet rs, int arg1) throws SQLException {
+		Lab lab = new Lab();
+		lab.setId(rs.getString("id"));
+		lab.setName(rs.getString("name"));
+		lab.setType(rs.getString("type"));
+	
+		
+		return lab;
+	}
+}
+
 	
 	
 
