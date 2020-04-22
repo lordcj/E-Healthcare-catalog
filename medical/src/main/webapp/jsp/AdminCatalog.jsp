@@ -17,7 +17,7 @@
             <a href="labs" style="text-decoration: none">Labs</a>
         </div>
         <div style="font-size: xxx-large;text-align: center;width: 100%;">
-            <a href="home.jsp" style="text-decoration: none">Home</a>
+            <a href="/medical" style="text-decoration: none">Home</a>
         </div>
     </div>
 
