@@ -41,15 +41,3 @@ public class DoctorDaoImpl implements DoctorDao {
 	}
 	
 }
-
-class DoctorMapper implements RowMapper<Doctor>{
-	public Doctor mapRow(ResultSet rs, int arg1) throws SQLException{
-		Doctor doctor = new Doctor();
-		doctor.setId(rs.getString("id"));
-		doctor.setUsername(rs.getString("name"));
-		doctor.setType(rs.getString("type"));
-		doctor.setPassword(rs.getString("password"));
-		
-		return doctor;
-	}
-}
