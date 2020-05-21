@@ -4,11 +4,18 @@
 <html>
 <head>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome</title>
 </head>
 <body>
-	
+	<!-- Navigation -->
+	<nav class="w3-bar w3-black">
+  		<a href="home.jsp" class="w3-button w3-bar-item">Home</a>
+  		<a href="adminlogin" class="w3-button w3-bar-item">Administrator</a>
+  		<a href="doctorlogin.jsp" class="w3-button w3-bar-item">Doctor</a>
+  		<a href="patientloginandsignup.jsp" class="w3-button w3-bar-item">Patient</a>
+	</nav> 
 	<div class="d-flex justify-content-around" style="margin-top:20%" >
 		<div style="font-size: xxx-large;text-align: center;width: 100%;">
     		<a href="patientlogin" style="text-decoration: none">Login</a>
