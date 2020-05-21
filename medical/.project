@@ -34,4 +34,36 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/main/webapp/resources/images/doctor.png</name>
+			<type>1</type>
+			<location>D:/Bird Box/doctor.png</location>
+		</link>
+		<link>
+			<name>src/main/webapp/resources/images/home.png</name>
+			<type>1</type>
+			<location>D:/Bird Box/home.png</location>
+		</link>
+		<link>
+			<name>src/main/webapp/resources/images/image1.png</name>
+			<type>1</type>
+			<location>D:/Bird Box/image1.png</location>
+		</link>
+		<link>
+			<name>src/main/webapp/resources/images/image2.jpg</name>
+			<type>1</type>
+			<location>D:/Bird Box/image2.jpg</location>
+		</link>
+		<link>
+			<name>src/main/webapp/resources/images/image3.jpg</name>
+			<type>1</type>
+			<location>D:/Bird Box/image3.jpg</location>
+		</link>
+		<link>
+			<name>src/main/webapp/resources/images/patient.png</name>
+			<type>1</type>
+			<location>D:/Bird Box/patient.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>
