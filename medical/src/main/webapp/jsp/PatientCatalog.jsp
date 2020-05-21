@@ -12,13 +12,13 @@
 <title>Welcome</title>
 </head>
 <body>
-	 <!-- Navigation -->
+	<!-- Navigation -->
 	<nav class="w3-bar w3-black">
   		<a href="home.jsp" class="w3-button w3-bar-item">Home</a>
   		<a href="adminlogin" class="w3-button w3-bar-item">Administrator</a>
-  		<a href="doctorlogin.jsp" class="w3-button w3-bar-item">Doctor</a>
-  		<a href="patientloginandsignup.jsp" class="w3-button w3-bar-item">Patient</a>
-	</nav> 
+  		<a href="doctorlogin" class="w3-button w3-bar-item">Doctor</a>
+  		<a href="patientloginandsignup" class="w3-button w3-bar-item">Patient</a>
+	</nav>  
 	<div class="container">Hi ${id }</div>
 	<c:if test="${not empty doctors}">
     <c:forEach var="doctor" items="${doctors}" varStatus="status">

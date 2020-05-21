@@ -16,8 +16,8 @@
 	<nav class="w3-bar w3-black">
   		<a href="home.jsp" class="w3-button w3-bar-item">Home</a>
   		<a href="adminlogin" class="w3-button w3-bar-item">Administrator</a>
-  		<a href="doctorlogin.jsp" class="w3-button w3-bar-item">Doctor</a>
-  		<a href="patientloginandsignup.jsp" class="w3-button w3-bar-item">Patient</a>
+  		<a href="doctorlogin" class="w3-button w3-bar-item">Doctor</a>
+  		<a href="patientloginandsignup" class="w3-button w3-bar-item">Patient</a>
 	</nav> 
 	<!-- <form:form id="regForm" modelAttribute="doctor" action="doctorloginprocess"
 		method="post" class="text-center border border-light p-5" style="margin-left: 20%; margin-right: 20%;margin-top: 10%;box-shadow: 0 4px 8px 0 #ba68f6, 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
