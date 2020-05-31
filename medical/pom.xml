@@ -86,6 +86,13 @@
       <version>${spring.version}</version>
     </dependency>
 
+	<!-- HTMLUnit Driver -->
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>htmlunit-driver</artifactId>
+    <version>2.26</version>
+</dependency>
+
     <!-- MySQL database driver -->
     <dependency>
       <groupId>mysql</groupId>
