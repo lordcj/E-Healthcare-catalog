@@ -6,7 +6,7 @@
 <html>
 <head>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-  <title>Patient</title>
+  <title>Labs</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css"/>
@@ -23,6 +23,9 @@
  	 background-image: url("<%=request.getContextPath()%>/resources/images/bookings.jpg");
  	 background-size: cover;
  	 min-height: 400px;
+	}
+	table tr {
+   	 text-align: center; 
 	}
 </style>
 </head>

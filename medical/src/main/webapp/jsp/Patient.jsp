@@ -22,9 +22,7 @@
 	<!-- Navigation -->
 	<nav class="w3-bar w3-black">
   		<a href="/medical" class="w3-button w3-bar-item">Home</a>
-  		<a href="/medical/adminlogin" class="w3-button w3-bar-item">Administrator</a>
-  		<a href="/medical/doctorlogin" class="w3-button w3-bar-item">Doctor</a>
-  		<a href="/medical/patientloginandsignup" class="w3-button w3-bar-item">Patient</a>
+  		
   		<div class = "topnav-right"><a href="logout" class="w3-button w3-bar-item">Logout</a></div>
 	</nav> 
 	<div class="card-deck">

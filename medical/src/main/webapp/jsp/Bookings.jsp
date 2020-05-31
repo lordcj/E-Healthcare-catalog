@@ -28,18 +28,17 @@
 	<!-- Navigation -->
 	<nav class="w3-bar w3-black">
   		<a href="/medical" class="w3-button w3-bar-item">Home</a>
-  		<a href="/medical/adminlogin" class="w3-button w3-bar-item">Administrator</a>
-  		<a href="/medical/doctorlogin" class="w3-button w3-bar-item">Doctor</a>
-  		<a href="/medical/patientloginandsignup" class="w3-button w3-bar-item">Patient</a>
+  	
   		<div class = "topnav-right"><a href="logout" class="w3-button w3-bar-item">Logout</a></div>
 	</nav> 
-  <div class="container">  
+  <div class="container">
+  <div class="jumbotron"></div>  
   <h1 align="center">Welcome</h1>
   <h2>Your slots with doctor are as follows :</h2>        
   <table class="table table-dark table-striped">
     <thead>
       <tr>
-        <th>Slot id</th>
+        <th>Doctor Id</th>
         <th>Slot Details</th>
       </tr>
     </thead>
@@ -60,7 +59,7 @@
   <table class="table table-dark table-striped">
     <thead>
       <tr>
-        <th>Slot id</th>
+        <th>Lab id</th>
         <th>Slot Details</th>
       </tr>
     </thead>
