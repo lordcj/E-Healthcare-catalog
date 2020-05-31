@@ -21,23 +21,39 @@
 <body>
 	<!-- Navigation -->
 	<nav class="w3-bar w3-black">
-  		<a href="home.jsp" class="w3-button w3-bar-item">Home</a>
-  		<a href="adminlogin" class="w3-button w3-bar-item">Administrator</a>
-  		<a href="doctorlogin" class="w3-button w3-bar-item">Doctor</a>
-  		<a href="patientloginandsignup" class="w3-button w3-bar-item">Patient</a>
+  		<a href="/medical" class="w3-button w3-bar-item">Home</a>
+  		<a href="/medical/adminlogin" class="w3-button w3-bar-item">Administrator</a>
+  		<a href="/medical/doctorlogin" class="w3-button w3-bar-item">Doctor</a>
+  		<a href="/medical/patientloginandsignup" class="w3-button w3-bar-item">Patient</a>
   		<div class = "topnav-right"><a href="logout" class="w3-button w3-bar-item">Logout</a></div>
 	</nav> 
-	<div class="d-flex justify-content-around" style="margin-top:20%" >
-		<div style="font-size: xxx-large;text-align: center;width: 100%;">
-    		<a href="${id }/bookings" style="text-decoration: none">Bookings</a>
-		</div>
-        <div style="font-size: xxx-large;text-align: center;width: 100%;">
-            <a href="${id }/bookdoctor" style="text-decoration: none">Book Doctor Slots</a>
-        </div>
-        <div style="font-size: xxx-large;text-align: center;width: 100%;">
-            <a href="${id }/booklab" style="text-decoration: none">Book Lab Slots</a>
-        </div>
+	<div class="card-deck">
+	<div class="d-flex justify-content-around" style="margin-top:5%" >
+  <div class="card">
+  <a href="${id }/bookings"><img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/booking.png" alt="Card image cap"></a>
+    <div class="card-body">
+      <h2 class="card-title"><a href="${id }/bookings">Bookings</a></h2>
     </div>
-
+    <div class="card-footer">
+    </div>
+  </div>
+  <div class="card">
+  <a href="${id }/bookdoctor"><img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/bookdoc.png" alt="Card image cap"></a>
+    <div class="card-body">
+      <h2 class="card-title"><a href="${id }/bookdoctor">Book Doctor Slots</a></h2>
+    </div>
+    <div class="card-footer">
+    </div>
+  </div>
+  <div class="card">
+  <a href="${id }/booklab"><img class="card-img-top" src="<%=request.getContextPath()%>/resources/images/booklab.png" alt="Card image cap"></a>
+    <div class="card-body">
+      <h2 class="card-title"><a href="${id }/booklab">Book Lab Slots</a></h2>
+    </div>
+    <div class="card-footer">
+    </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

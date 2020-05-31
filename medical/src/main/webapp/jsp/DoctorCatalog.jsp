@@ -16,27 +16,28 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <style>
-.topnav-right {
-  float: right;
-}
+	.topnav-right {
+  	float: right;
+	}
+	.jumbotron {
+ 	 background-image: url("<%=request.getContextPath()%>/resources/images/bookings.jpg");
+ 	 background-size: cover;
+ 	 min-height: 300px;
+	}
 </style>
 </head>
 <body>
 	<!-- Navigation -->
 	<nav class="w3-bar w3-black">
-  		<a href="home.jsp" class="w3-button w3-bar-item">Home</a>
-  		<a href="adminlogin" class="w3-button w3-bar-item">Administrator</a>
-  		<a href="doctorlogin" class="w3-button w3-bar-item">Doctor</a>
-  		<a href="patientloginandsignup" class="w3-button w3-bar-item">Patient</a>
+  		<a href="/medical" class="w3-button w3-bar-item">Home</a>
+  		<a href="/medical/adminlogin" class="w3-button w3-bar-item">Administrator</a>
+  		<a href="/medical/doctorlogin" class="w3-button w3-bar-item">Doctor</a>
+  		<a href="/medical/patientloginandsignup" class="w3-button w3-bar-item">Patient</a>
   		<div class = "topnav-right"><a href="logout" class="w3-button w3-bar-item">Logout</a></div>
 	</nav> 
-  <div class="container">
-  <div class="jumbotron">
-    <h1>Welcome doctor with id = ${id }</h1>
-    <h2>Your slots are as follows :</h2>
-  </div>
-  </div>
-  <div class="container">          
+  <div class="container">    
+  <h1>Welcome doctor</h1>      
+  <h2>Your slots are as follows :</h2>
   <table class="table table-dark table-striped">
     <thead>
       <tr>
