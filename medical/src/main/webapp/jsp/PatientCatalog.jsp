@@ -33,8 +33,8 @@
   		
   		<div class = "topnav-right"><a href="/medical/patient/logout" class="w3-button w3-bar-item">Logout</a></div>
 	</nav>
-  <div class="container">
   <div class="jumbotron"></div>
+  <div class="container">
   <h1 align="center">Welcome</h1>  
   <h2>Available doctors and slots are as follows :</h2>   
   </div>     
